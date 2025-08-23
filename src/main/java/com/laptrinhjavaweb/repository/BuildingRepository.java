@@ -1,4 +1,4 @@
-package com.laptrinhjavaweb.jdbc;
+package com.laptrinhjavaweb.repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ import com.laptrinhjavaweb.constant.SystemConstant;
 import com.laptrinhjavaweb.utils.ConnectionUtils;
 import com.laptrinhjavaweb.utils.StringUtils;
 
-public class BuildingJdbc {
+public class BuildingRepository {
    
     public static void main(String[] args) {
         // Input:
