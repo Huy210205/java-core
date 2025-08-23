@@ -1,4 +1,4 @@
-package com.laptrinhjavaweb.jdbc;
+package com.laptrinhjavaweb.repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,24 +11,21 @@ import com.laptrinhjavaweb.constant.SystemConstant;
 import com.laptrinhjavaweb.utils.ConnectionUtils;
 import com.laptrinhjavaweb.utils.StringUtils;
 
-public class AccountJdbc{
-    static final String DB_URL = "jdbc:mysql://localhost:3306/javacore72022";
-    static final String USER = "root";
-    static final String PASS = "1234";
-
+public class CustomerRepository {
+    
     public static void main(String[] args) {
         // Input:
        
-        String userName = null;
+        String fullName = null;
         
         ResultSet rs = null;
         Connection conn = null; 
         Statement stmt = null;
         try {
-            String sql = "select * from account "+SystemConstant.ONE_EQUAL_ONE+"";
+            String sql = "select * from customer "+SystemConstant.ONE_EQUAL_ONE+"";
           
-            if (!StringUtils.isNullOrEmpty(userName)) {
-                sql += " and username like '%" + userName + "%'";
+            if (!StringUtils.isNullOrEmpty(fullName)) {
+                sql += " and fullname like '%" + fullName + "%'";
                 // sql += " and name like ?";
             }
 
