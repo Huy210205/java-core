@@ -8,6 +8,7 @@ import com.laptrinhjavaweb.dao.anhyeuem.BuildingAnhyeuem;
 import com.laptrinhjavaweb.dao.impl.BuildingDaoImpl;
 import com.laptrinhjavaweb.input.BuildingSearchInput;
 import com.laptrinhjavaweb.output.BuildingOutput;
+import com.laptrinhjavaweb.utils.BuildingTypeUtils;
 import com.laptrinhjavaweb.service.BuildingService;
 
 public class BuildingServiceImpl implements BuildingService {
@@ -30,12 +31,10 @@ public class BuildingServiceImpl implements BuildingService {
 		// int i = 0;
 		for (BuildingAnhyeuem item : anhyeuems) {
 			BuildingOutput buildingOutput = new BuildingOutput();
-
 			buildingOutput.setName(item.getName());
 			buildingOutput.setAddress(item.getStreet() + " - " + item.getWard() + "-" + item.getDistrict());
-			buildingOutput.setType(item.getType());
-			// buildingEmyeuanhs[i] = buildingEmyeuanh;
-			// i++;
+			// Chuyển type code sang name
+			buildingOutput.setType(BuildingTypeUtils.getType(item.getType()));
 			buildingEmyeuanhs.add(buildingOutput);
 		}
 		return buildingEmyeuanhs;
