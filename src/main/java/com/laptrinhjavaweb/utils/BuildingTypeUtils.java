@@ -6,33 +6,29 @@ import java.util.List;
 import java.util.Map;
 
 import com.laptrinhjavaweb.constant.BuildingTypeConstant;
+import com.laptrinhjavaweb.enums.BuildingTypeEnums;
 
 public class BuildingTypeUtils {
-    private static final Map<String, String> BUILDING_TYPE_MAP = new HashMap<>();
-    static {
-        BUILDING_TYPE_MAP.put(BuildingTypeConstant.TANG_TRET_CODE, BuildingTypeConstant.TANG_TRET_NAME);
-        BUILDING_TYPE_MAP.put("tang_tret", BuildingTypeConstant.TANG_TRET_NAME);
-        BUILDING_TYPE_MAP.put("tang tret", BuildingTypeConstant.TANG_TRET_NAME);
-        BUILDING_TYPE_MAP.put("TANG_TRET", BuildingTypeConstant.TANG_TRET_NAME);
-
-        BUILDING_TYPE_MAP.put(BuildingTypeConstant.NGUYEN_CAN_CODE, BuildingTypeConstant.NGUYEN_CAN_NAME);
-        BUILDING_TYPE_MAP.put("nguyen_can", BuildingTypeConstant.NGUYEN_CAN_NAME);
-        BUILDING_TYPE_MAP.put("nguyen can", BuildingTypeConstant.NGUYEN_CAN_NAME);
-        BUILDING_TYPE_MAP.put("NGUYEN_CAN", BuildingTypeConstant.NGUYEN_CAN_NAME);
-
-        BUILDING_TYPE_MAP.put(BuildingTypeConstant.NOI_THAT_CODE, BuildingTypeConstant.NOI_THAT_NAME);
-        BUILDING_TYPE_MAP.put("noi_that", BuildingTypeConstant.NOI_THAT_NAME);
-        BUILDING_TYPE_MAP.put("NOI_THAT", BuildingTypeConstant.NOI_THAT_NAME);
-    }
 
     public static String getType(String oldType) {
-        if (oldType == null || oldType.trim().isEmpty())
-            return "Không xác định";
         List<String> newTypes = new ArrayList<>();
-        for (String item : oldType.split(",")) {
-            String code = BUILDING_TYPE_MAP.get(item.trim());
-            newTypes.add(code != null ? code : "Không xác định");
+        if (oldType != null) {
+            for (String item : oldType.split(",")) {
+                /*Map<String, String> mapType = initBuildingType();
+                String code = mapType.get(item);
+                newTypes.add(code);*/
+                newTypes.add(BuildingTypeEnums.valueOf(item).getValue());
+            }
+            return String.join(",", newTypes);
         }
-        return String.join(",", newTypes);
+        return null;
+    }
+
+    public static Map<String, String> initBuildingType() {
+        Map<String, String> results = new HashMap<>();
+        results.put(BuildingTypeConstant.TANG_TRET_CODE, BuildingTypeConstant.TANG_TRET_NAME);
+        results.put(BuildingTypeConstant.NGUYEN_CAN_CODE, BuildingTypeConstant.NGUYEN_CAN_NAME);
+        results.put(BuildingTypeConstant.NOI_THAT_CODE, BuildingTypeConstant.NOI_THAT_NAME);
+        return results;
     }
 }

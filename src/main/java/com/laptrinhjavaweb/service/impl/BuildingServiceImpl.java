@@ -37,7 +37,7 @@ public class BuildingServiceImpl implements BuildingService {
 			buildingOutput.setType(BuildingTypeUtils.getType(item.getType()));
 			buildingEmyeuanhs.add(buildingOutput);
 		}
-		return buildingEmyeuanhs;
+		return buildingEmyeuanhs;	
 	}
 
 }
