@@ -18,7 +18,9 @@ public class BuildingController {
 		
 		return results;
 	}
-      public BuildingDTO insert(BuildingDTO newBuilding) {
+      public BuildingDTO addBuilding(BuildingDTO newBuilding) {
+    	  
+    	  buildingService.save(newBuilding);
     	  
     	  return null;
       }

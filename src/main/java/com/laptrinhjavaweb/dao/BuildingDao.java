@@ -8,4 +8,6 @@ public interface BuildingDao {
 
 	List<BuildingAnhyeuem> findBuilding(Integer floorArea, String name, String ward, String street, String district,
 			String type);
+	
+	Long insert(BuildingAnhyeuem buildingAnhyeuem, String rentAreas);
 }
