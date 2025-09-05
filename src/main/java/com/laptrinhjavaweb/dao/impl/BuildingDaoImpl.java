@@ -82,47 +82,48 @@ public class BuildingDaoImpl implements BuildingDao {
 
 	@Override
 	public Long insert(BuildingAnhyeuem buildingAnhyeuem, String rentAreas) {
-		 
-		 ResultSet resultSet = null;
-		 Long buildingId = null;
-		 Connection conn = null;
-		 Statement stmt = null;
-	    try  {
-	    	conn = ConnectionUtils.getConnection();
-	    	stmt = conn.createStatement();
-	    	conn.setAutoCommit(false);
-	    	String sql = "INSERT INTO building(name,street) VALUES ('"+ buildingAnhyeuem.getName() + "','"+buildingAnhyeuem.getStreet()+"')";
-	    	
-       int flag = stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
-       resultSet = stmt.getGeneratedKeys();
-       if(flag > 0) {
-    	   while (resultSet.next()) {
-    		   buildingId = resultSet.getLong(1);
-    	   }
-    	   
-       }
-         
-       
-       if(rentAreas.length() > 0) {
-			for (String item: rentAreas.split(",")) {
-				
-				String sql2 = "INSERT INTO rentarea(value, buildingid) VALUES ("+Integer.parseInt(item)+","+buildingId+ ")";
-				stmt.executeUpdate(sql2);
-									
-			    }
-		}
-         	conn.commit();
-           return buildingId;
-	    } catch (SQLException e) {
-	    	try {
+
+		ResultSet resultSet = null;
+		Long buildingId = null;
+		Connection conn = null;
+		Statement stmt = null;
+		try {
+			conn = ConnectionUtils.getConnection();
+			stmt = conn.createStatement();
+			conn.setAutoCommit(false);
+			String sql = "INSERT INTO building(name,street) VALUES ('" + buildingAnhyeuem.getName() + "','"
+					+ buildingAnhyeuem.getStreet() + "')";
+
+			int flag = stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			resultSet = stmt.getGeneratedKeys();
+			if (flag > 0) {
+				while (resultSet.next()) {
+					buildingId = resultSet.getLong(1);
+				}
+
+			}
+
+			if (rentAreas.length() > 0) {
+				for (String item : rentAreas.split(",")) {
+
+					String sql2 = "INSERT INTO rentarea(value, buildingid) VALUES (" + Integer.parseInt(item) + ","
+							+ buildingId + ")";
+					stmt.executeUpdate(sql2);
+
+				}
+			}
+			conn.commit();
+			return buildingId;
+		} catch (SQLException e) {
+			try {
 				conn.rollback();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-	        e.printStackTrace();
-	    }finally {
-	    	try {
+			e.printStackTrace();
+		} finally {
+			try {
 				conn.close();
 				stmt.close();
 				resultSet.close();
@@ -130,8 +131,7 @@ public class BuildingDaoImpl implements BuildingDao {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-	    }
-	       return null;
+		}
+		return null;
 	}
 }
-

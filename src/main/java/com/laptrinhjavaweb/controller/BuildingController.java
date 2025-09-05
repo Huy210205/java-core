@@ -9,20 +9,18 @@ import com.laptrinhjavaweb.service.BuildingService;
 import com.laptrinhjavaweb.service.impl.BuildingServiceImpl;
 
 public class BuildingController {
-	
+
 	private BuildingService buildingService = new BuildingServiceImpl();
-	
+
 	public List<BuildingOutput> findBuilding(BuildingSearchInput buildingSearch) {
-		
+
 		List<BuildingOutput> results = buildingService.findBuilding(buildingSearch);
-		
+
 		return results;
 	}
-      public BuildingDTO addBuilding(BuildingDTO newBuilding) {
-    	  
-    	  buildingService.save(newBuilding);
-    	  
-    	  return null;
-      }
+
+	public BuildingDTO addBuilding(BuildingDTO newBuilding) {
+		buildingService.save(newBuilding);
+		return newBuilding;
+	}
 }
-		
