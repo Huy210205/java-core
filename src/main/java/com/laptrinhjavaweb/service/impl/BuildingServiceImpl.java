@@ -7,7 +7,6 @@ import com.laptrinhjavaweb.converter.BuildingConverter;
 import com.laptrinhjavaweb.dao.BuildingDao;
 import com.laptrinhjavaweb.dao.RentAreaDao;
 import com.laptrinhjavaweb.dao.anhyeuem.BuildingAnhyeuem;
-import com.laptrinhjavaweb.dao.anhyeuem.RentAreaAnhyeuem;
 import com.laptrinhjavaweb.dao.impl.BuildingDaoImpl;
 import com.laptrinhjavaweb.dao.impl.RentAreaDaoImpl;
 import com.laptrinhjavaweb.dto.BuildingDTO;

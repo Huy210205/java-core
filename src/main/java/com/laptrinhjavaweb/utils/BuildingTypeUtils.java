@@ -24,11 +24,11 @@ public class BuildingTypeUtils {
         return null;
     }
 
-    public static Map<String, String> initBuildingType() {
+    /*public static Map<String, String> initBuildingType() {
         Map<String, String> results = new HashMap<>();
         results.put(BuildingTypeConstant.TANG_TRET_CODE, BuildingTypeConstant.TANG_TRET_NAME);
         results.put(BuildingTypeConstant.NGUYEN_CAN_CODE, BuildingTypeConstant.NGUYEN_CAN_NAME);
         results.put(BuildingTypeConstant.NOI_THAT_CODE, BuildingTypeConstant.NOI_THAT_NAME);
         return results;
-    }
+    }*/
 }

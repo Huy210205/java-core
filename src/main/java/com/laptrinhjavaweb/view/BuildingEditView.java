@@ -6,8 +6,8 @@ import com.laptrinhjavaweb.dto.BuildingDTO;
 public class BuildingEditView {
 
 	public static void main(String[] args) {
-		String name = "tòa nhà 7";
-		String street = "đường số 7";
+		String name = "tòa nhà 8";
+		String street = "đường số 8";
 		String ward = null;
 		String district = null;
 		Long floorArea = null;
